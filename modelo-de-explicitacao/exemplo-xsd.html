@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Modelo de explicitação de serviço | Cartas de Serviços</title>
+        <title>Exemplo XSD | Cartas de Serviços</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.1">
@@ -20,10 +20,8 @@
         
     
     
-    <link rel="next" href="../modelo-de-explicitacao/definicao-tecnica.html" />
     
-    
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../modelo-de-explicitacao/definicao-tecnica.html" />
     
 
         
@@ -36,7 +34,7 @@
     
 
         
-    <div class="book" data-level="1" data-basepath=".." data-revision="Tue Apr 14 2015 20:34:45 GMT+0000 (UTC)">
+    <div class="book" data-level="1.1.1" data-basepath=".." data-revision="Tue Apr 14 2015 20:34:45 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -66,7 +64,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="modelo-de-explicitacao/index.html">
+        <li class="chapter " data-level="1" data-path="modelo-de-explicitacao/index.html">
             
                 
                     <a href="../modelo-de-explicitacao/index.html">
@@ -98,7 +96,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.1" data-path="modelo-de-explicitacao/exemplo-xsd.html">
+        <li class="chapter active" data-level="1.1.1" data-path="modelo-de-explicitacao/exemplo-xsd.html">
             
                 
                     <a href="../modelo-de-explicitacao/exemplo-xsd.html">
@@ -226,10 +224,60 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="modelo-de-explicita%C3%A7%C3%A3o-da-finalidade-do-servi%C3%A7o">Modelo de explicita&#xE7;&#xE3;o da finalidade do servi&#xE7;o</h1>
-<p>Define um padr&#xE3;o de cataloga&#xE7;&#xE3;o, exemplos pr&#xE1;ticos e tutoriais para a correta documenta&#xE7;&#xE3;o dos elementos de 
-neg&#xF3;cio do servi&#xE7;o, sua necessidade, seu p&#xFA;blico-alvo, a linguagem a ser utilizada, os &#xF3;rg&#xE3;os respons&#xE1;veis e 
-as tags de busca, por exemplo.   </p>
+                        <h1 id="exemplo-de-xsd-e-xml">Exemplo de XSD e XML</h1>
+<p>Este &#xE9; um exemplo simples, contendo apenas dois campos, afim de ilustrar como modelar
+especifica&#xE7;&#xF5;es de servi&#xE7;os utilizando o formato <code>XSD</code>.</p>
+<p>Campos:</p>
+<ul>
+<li><code>titulo</code>: campo obrigat&#xF3;rio contento no m&#xED;nimo 5 e no m&#xE1;ximo 255 caracteres</li>
+<li><code>descricao</code>: campo obrigat&#xF3;rio contento no m&#xED;nimo 50 e no m&#xE1;ximo 500 caracteres</li>
+</ul>
+<pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">xs:schema</span> <span class="hljs-attribute">xmlns:xs</span>=<span class="hljs-value">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+           <span class="hljs-attribute">targetNamespace</span>=<span class="hljs-value">&quot;http://servicos.gov.br/carta/v1/servico&quot;</span>
+           <span class="hljs-attribute">elementFormDefault</span>=<span class="hljs-value">&quot;qualified&quot;</span>
+           <span class="hljs-attribute">attributeFormDefault</span>=<span class="hljs-value">&quot;unqualified&quot;</span>
+           <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1.0&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">xs:element</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;servico&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">xs:complexType</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">xs:sequence</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">xs:element</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;titulo&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;textoCurto&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">xs:element</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;descricao&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;textoLongo&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">xs:sequence</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">xs:complexType</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">xs:element</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">xs:simpleType</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;textoCurto&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">xs:restriction</span> <span class="hljs-attribute">base</span>=<span class="hljs-value">&quot;xs:string&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">xs:minLength</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;5&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">xs:maxLength</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;255&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">xs:restriction</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">xs:simpleType</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">xs:simpleType</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;textoLongo&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">xs:restriction</span> <span class="hljs-attribute">base</span>=<span class="hljs-value">&quot;xs:string&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">xs:minLength</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;50&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">xs:maxLength</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;500&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">xs:restriction</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">xs:simpleType</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">xs:schema</span>&gt;</span>
+</code></pre>
+<p>Arquivo <code>XML</code> validado pelo <code>XSD</code> acima definido:</p>
+<pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">servico</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://servicos.gov.br/carta/v1/servico&quot;</span>
+         <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1.0&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">titulo</span>&gt;</span>Retificadora On Line (Extrato da DIRPF)<span class="hljs-tag">&lt;/<span class="hljs-title">titulo</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">descricao</span>&gt;</span>
+      Alterar alguns dados da declara&#xE7;&#xE3;o, diretamente pela internet, sem a utiliza&#xE7;&#xE3;o do 
+      programa IRPF e nem do Receitanet. N&#xE3;o h&#xE1; necessidade de preencher novamente os dados que n&#xE3;o ser&#xE3;o alterados. 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">descricao</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">servico</span>&gt;</span>
+</code></pre>
 
                     
                     </section>
@@ -240,10 +288,8 @@ as tags de busca, por exemplo.   </p>
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introdução"><i class="fa fa-angle-left"></i></a>
+        <a href="../modelo-de-explicitacao/definicao-tecnica.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Definição técnica"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../modelo-de-explicitacao/definicao-tecnica.html" class="navigation navigation-next " aria-label="Next page: Definição técnica"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
